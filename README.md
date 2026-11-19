@@ -17,8 +17,7 @@ Double-click `index.html`. It opens in the browser.
 ## Status
 
 - Hebrew only for now. An English toggle is planned after the Hebrew version is approved.
-- The page is marked `noindex` (search engines are asked not to list it) until launch is approved.
-  To allow search engines, remove the `<meta name="robots" ...>` line in `index.html`.
+- Open to search engines since 2026-11-18 (`index,follow`, with a canonical address).
 
 ## Rules for editing copy
 

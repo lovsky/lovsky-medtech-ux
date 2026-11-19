@@ -54,8 +54,9 @@ a:focus-visible,.sr-only:focus-visible + .situation{outline:3px solid var(--blue
 
 /* The five text styles */
 h1,h2{text-wrap:balance}
-h1{font-weight:800;font-size:clamp(38px,5.5vw,80px);line-height:1.08;letter-spacing:-.01em}
-h2,.step-num,.statement p{font-weight:700;font-size:clamp(32px,3.9vw,52px);line-height:1.15;letter-spacing:-.01em}
+p,li,h3,blockquote{text-wrap:pretty}
+h1{font-weight:800;font-size:clamp(38px,5.5vw,80px);line-height:1.08}
+h2,.step-num,.statement p{font-weight:700;font-size:clamp(32px,3.9vw,52px);line-height:1.15}
 h3{font-weight:700;font-size:24px;line-height:1.3}
 .situation{font-weight:400;font-size:24px;line-height:1.35}
 .lede,.section-head p,.contact-copy p{font-weight:400;font-size:var(--lead);line-height:1.45}
@@ -108,15 +109,18 @@ strong,.proof-company,.fit-note,.link-forward,.contact-line{font-weight:700}
 .situation:nth-of-type(3){grid-row:3}
 .situation:nth-of-type(4){grid-row:4;border-bottom:1px solid var(--line-soft)}
 .situation em{font-style:normal;display:block}
-.situation:hover{color:var(--paper)}
-input:checked + .situation{color:var(--paper)}
-input:checked + .situation em{color:var(--blue)}
+.situation:hover{color:var(--blue)}
+input:checked + .situation{color:var(--paper);cursor:default}
 .answer-facts{margin-top:24px;border-top:1px solid var(--line-strong)}
 .answer-facts li{padding:14px 0;border-bottom:1px solid var(--line-soft)}
-.answer{grid-column:2;grid-row:1 / span 5;display:none;padding:40px;border-radius:var(--radius-md);background:var(--paper);color:var(--ink)}
-input:checked + .situation + .answer{display:block}
+/* All four cards share one grid area and stretch to the height of the four sentences, so every card is the same height. Only the selected one is visible. */
+.answer{grid-column:2;grid-row:1 / span 4;align-self:stretch;display:flex;flex-direction:column;visibility:hidden;padding:40px;border-radius:var(--radius-md);background:var(--paper);color:var(--ink)}
+input:checked + .situation + .answer{visibility:visible}
 .answer-what{margin-top:12px}
 .answer-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:28px}
+.answer .answer-actions{margin-top:auto;padding-top:28px}
+.match-actions{display:none}
+.band-ink .match-actions .link-forward:hover{text-decoration-color:var(--paper)}
 
 /* Proof */
 .proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
@@ -242,8 +246,9 @@ input:checked + .situation + .answer{display:block}
   .match{display:block}
   .situation{padding:28px 0 16px;border:0;border-top:1px solid var(--line-soft);color:var(--paper);cursor:default}
   .situation:nth-of-type(4){border-bottom:0}
-  .situation em{color:var(--blue)}
-  .answer{display:block;margin-bottom:28px;padding:28px}
+  .answer{display:block;visibility:visible;margin-bottom:28px;padding:28px}
+  .answer .answer-actions{display:none}
+  .match-actions{display:flex;margin-top:8px}
   .hero-foot{grid-template-columns:1fr}
   .lens-stick{display:flex;flex-direction:column;align-items:stretch;gap:20px}
   .lens-copy{display:contents}

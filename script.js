@@ -5,10 +5,10 @@
   var page = window.location.origin + window.location.pathname;
   if (!/^https?:/.test(page)) return;
   document.querySelectorAll('a[data-forward]').forEach(function (link) {
-    var text =
-      'חשבתי עליכם. אנה לובסקי עובדת עם מיזמים רפואיים בדיוק במצב הזה: "' +
-      link.getAttribute('data-forward') +
-      '"\n' + page + '#match';
+    var quote = link.getAttribute('data-forward');
+    var text = quote
+      ? 'חשבתי עליכם. אנה לובסקי עובדת עם מיזמים רפואיים בדיוק במצב הזה: "' + quote + '"\n' + page + '#match'
+      : 'חשבתי עליכם. אנה לובסקי עובדת עם מיזמים רפואיים, מהרעיון ועד מוצר פעיל.\n' + page;
     link.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(text);
   });
 })();
